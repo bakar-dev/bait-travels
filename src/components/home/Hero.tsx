@@ -74,7 +74,7 @@ const Hero = () => {
                     {slide.description}
                   </p>
                   <Link href={slide.buttonLink}>
-                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Button size="lg" className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">
                       {slide.buttonLabel}
                     </Button>
                   </Link>

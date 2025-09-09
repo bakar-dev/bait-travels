@@ -211,7 +211,7 @@ const PackageCard = ({ pkg }: { pkg: any }) => (
     <CardFooter className="p-6 bg-secondary/50 flex justify-between items-center">
       <p className="text-2xl font-bold text-primary">{pkg.price}</p>
       <Link href={`/packages/${pkg.slug}`}>
-        <Button className="bg-primary text-primary-foreground hover:bg-primary/90">View Details</Button>
+        <Button className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">View Details</Button>
       </Link>
     </CardFooter>
   </Card>
