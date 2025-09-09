@@ -247,7 +247,7 @@ const Packages = () => {
         </div>
 
         <Tabs defaultValue="5-star" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
+          <TabsList className="flex flex-wrap h-auto justify-center mb-8">
             <TabsTrigger value="5-star">5-Star</TabsTrigger>
             <TabsTrigger value="4-star">4-Star</TabsTrigger>
             <TabsTrigger value="3-star">3-Star</TabsTrigger>
