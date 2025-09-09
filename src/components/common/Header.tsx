@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Landmark, Menu, X } from 'lucide-react';
+import { Landmark, Menu, X, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/#', label: 'Home' },
+  { href: '/', label: 'Home' },
   { href: '/#packages', label: 'Packages' },
   { href: '/#about', label: 'About' },
   { href: '/#blog', label: 'Blog' },
@@ -27,6 +27,7 @@ const Header = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -34,12 +35,15 @@ const Header = () => {
     const isActive = pathname === href;
     const isHomeHashLink = href.startsWith('/#') && pathname === '/';
     
+    // Special case for root home link
+    const isCurrent = isHomeHashLink ? (href === '/#') : isActive;
+
     return (
       <Link href={href} passHref>
         <span
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            isActive || (isHomeHashLink && href === '/#') ? "text-primary" : "text-foreground/80"
+            isCurrent ? "text-primary" : "text-foreground/80"
           )}
           onClick={() => setOpen(false)}
         >
@@ -51,17 +55,26 @@ const Header = () => {
 
   return (
     <header className={cn(
-      "sticky top-0 z-50 w-full transition-all duration-300",
-      isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent"
+      "sticky top-0 z-40 w-full transition-all duration-300",
+      isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent text-primary-foreground",
+      pathname !== '/' && "bg-background/95 backdrop-blur-sm border-b text-foreground"
     )}>
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Landmark className="h-6 w-6 text-primary" />
-          <span className="font-bold text-lg">Baitullah Travels</span>
+          <Landmark className={cn("h-6 w-6", (isScrolled || pathname !== '/') ? 'text-primary' : 'text-white' )}/>
+          <span className={cn("font-bold text-lg", (isScrolled || pathname !== '/') ? 'text-foreground' : 'text-white')}>Baitullah Travels</span>
         </Link>
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium flex-1">
           {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
         </nav>
+        <div className="hidden md:flex items-center justify-end space-x-2">
+            <Link href="/umrah-enquiry">
+                <Button>
+                    <HelpCircle className="mr-2 h-4 w-4"/>
+                    Umrah Enquiry
+                </Button>
+            </Link>
+        </div>
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -77,6 +90,9 @@ const Header = () => {
                   <span className="font-bold">Baitullah Travels</span>
                 </Link>
                 {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
+                <Button asChild>
+                    <Link href="/umrah-enquiry">Umrah Enquiry</Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

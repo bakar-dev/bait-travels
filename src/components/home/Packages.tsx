@@ -1,29 +1,36 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { CheckCircle } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 const packages = [
   {
     name: 'Economy Umrah Package',
     price: '$1,500',
-    features: ['14 Days', 'Makkah & Madinah Stay', 'Economy Hotels', 'Group Transport'],
+    features: ['14 Days', '3 Star Hotel (650m from Haram)', 'Makkah & Madinah Stay', 'Group Transport', 'Guided Ziyarat'],
     image: 'https://picsum.photos/600/400',
     aiHint: 'pilgrims praying'
   },
   {
-    name: 'Premium Umrah Package',
-    price: '$2,800',
-    features: ['10 Days', '5-Star Hotels near Haram', 'Private Transport', 'Guided Ziyarat'],
+    name: '3-Star Umrah Package',
+    price: '$1,950',
+    features: ['12 Days', '3 Star Hotel (450m from Haram)', 'Breakfast Included', 'Private Transport', 'Dedicated Hajj Guide'],
     image: 'https://picsum.photos/600/401',
-    aiHint: 'luxury hotel Mecca'
+    aiHint: 'modern hotel Mecca'
   },
   {
-    name: 'Hajj Deluxe Package',
-    price: '$8,500',
-    features: ['21 Days', 'Proximity to Jamarat', 'All Meals Included', 'Dedicated Hajj Guide'],
+    name: '4-Star Umrah Package',
+    price: '$2,500',
+    features: ['10 Days', '4 Star Hotel (250m from Haram)', 'Breakfast & Dinner', 'Private Luxury Transport', 'Exclusive Ziyarat'],
+    image: 'https://picsum.photos/600/406',
+    aiHint: 'hotel suite'
+  },
+  {
+    name: '5-Star Umrah Package',
+    price: '$3,200',
+    features: ['10 Days', '5-Star Hotel with Kaaba View', 'Full Board', 'VIP Transport', 'Personal Guide'],
     image: 'https://picsum.photos/600/402',
-    aiHint: 'crowd Hajj'
+    aiHint: 'luxury hotel Kaaba'
   },
 ];
 
@@ -37,7 +44,7 @@ const Packages = () => {
             Choose from a range of packages designed to cater to your needs, ensuring a comfortable and spiritually fulfilling journey.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {packages.map((pkg) => (
             <Card key={pkg.name} className="flex flex-col overflow-hidden transform hover:scale-105 transition-transform duration-300 shadow-lg">
               <CardHeader className="p-0">
@@ -50,7 +57,7 @@ const Packages = () => {
                 <ul className="space-y-3 text-muted-foreground">
                   {pkg.features.map((feature) => (
                     <li key={feature} className="flex items-center">
-                      <CheckCircle className="h-5 w-5 text-green-500 mr-2" />
+                      <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}
