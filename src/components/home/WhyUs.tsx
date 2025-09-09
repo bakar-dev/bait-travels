@@ -1,6 +1,14 @@
+"use client";
 
+import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Clock, HeartHandshake, Headphones, Star, Users } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel"
 
 const features = [
   {
@@ -36,6 +44,10 @@ const features = [
 ];
 
 const WhyUs = () => {
+    const plugin = React.useRef(
+        Autoplay({ delay: 2000, stopOnInteraction: false, stopOnMouseEnter: true })
+    )
+
   return (
     <section id="why-us" className="py-16 sm:py-24 bg-background">
       <div className="container">
@@ -45,21 +57,34 @@ const WhyUs = () => {
             We are committed to making your sacred journey a memorable and spiritually fulfilling experience.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="text-center transform hover:scale-105 transition-transform duration-300 shadow-lg bg-card/80">
-              <CardHeader>
-                <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
-                    {feature.icon}
-                </div>
-              </CardHeader>
-              <CardContent>
-                <CardTitle className="text-xl font-headline text-primary mb-2">{feature.title}</CardTitle>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <Carousel
+            opts={{
+                align: "start",
+                loop: true,
+            }}
+            plugins={[plugin.current]}
+            className="w-full"
+        >
+            <CarouselContent>
+                 {features.map((feature, index) => (
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                         <div className="p-1">
+                            <Card className="text-center transform hover:scale-105 transition-transform duration-300 shadow-lg bg-card/80 h-full">
+                                <CardHeader>
+                                    <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                                        {feature.icon}
+                                    </div>
+                                </CardHeader>
+                                <CardContent>
+                                    <CardTitle className="text-xl font-headline text-primary mb-2">{feature.title}</CardTitle>
+                                    <p className="text-muted-foreground">{feature.description}</p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+        </Carousel>
       </div>
     </section>
   );
