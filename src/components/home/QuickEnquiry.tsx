@@ -95,7 +95,7 @@ const QuickEnquiry = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+                <Button type="submit" className="w-full animate-bounce" disabled={form.formState.isSubmitting}>
                    <Send className="mr-2 h-4 w-4"/>
                   {form.formState.isSubmitting ? "Sending..." : "Request a Callback"}
                 </Button>
