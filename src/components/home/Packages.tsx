@@ -8,6 +8,16 @@ import Link from 'next/link';
 const packagesData = {
   '5-star': [
     {
+      name: '7-Day Platinum Umrah',
+      slug: '7-day-platinum-umrah',
+      price: '$2,800',
+      makkahHotel: 'Raffles Makkah Palace',
+      madinaHotel: 'The Oberoi Madina',
+      features: ['Full Board', 'VIP Transport', 'Personal Guide', 'Exclusive Ziyarat'],
+      image: 'https://picsum.photos/600/401',
+      aiHint: 'luxury hotel Kaaba',
+    },
+    {
       name: '10-Day Luxury Umrah',
       slug: '10-day-luxury-umrah',
       price: '$3,200',
@@ -15,7 +25,7 @@ const packagesData = {
       madinaHotel: '5-Star Hotel near Prophet\'s Mosque',
       features: ['Full Board', 'VIP Transport', 'Personal Guide', 'Exclusive Ziyarat'],
       image: 'https://picsum.photos/600/402',
-      aiHint: 'luxury hotel Kaaba',
+      aiHint: 'hotel suite luxury',
     },
     {
       name: '12-Day Premium Umrah',
@@ -27,8 +37,28 @@ const packagesData = {
       image: 'https://picsum.photos/600/407',
       aiHint: 'hotel lobby luxury',
     },
+     {
+      name: '15-Day Royal Umrah',
+      slug: '15-day-royal-umrah',
+      price: '$4,500',
+      makkahHotel: 'Jabal Omar Hyatt Regency',
+      madinaHotel: 'Pullman Zamzam Madina',
+      features: ['All Inclusive', 'Business Class Flights', 'Helicopter Tour', '24/7 Butler Service'],
+      image: 'https://picsum.photos/600/408',
+      aiHint: 'luxury suite balcony'
+    },
   ],
   '4-star': [
+    {
+       name: '7-Day Gold Umrah',
+      slug: '7-day-gold-umrah',
+      price: '$2,100',
+      makkahHotel: 'Makkah Hotel & Towers',
+      madinaHotel: 'Madinah Hilton',
+      features: ['Breakfast & Dinner', 'Private Transport', 'Guided Ziyarat', 'Visa Processing'],
+      image: 'https://picsum.photos/600/409',
+      aiHint: 'modern hotel room'
+    },
     {
       name: '10-Day Deluxe Umrah',
       slug: '10-day-deluxe-umrah',
@@ -40,20 +70,40 @@ const packagesData = {
       aiHint: 'hotel suite',
     },
      {
-      name: '14-Day Comfort Umrah',
-      slug: '14-day-comfort-umrah',
+      name: '12-Day Comfort Umrah',
+      slug: '12-day-comfort-umrah',
       price: '$2,900',
       makkahHotel: 'Swissôtel Al Maqam Makkah',
       madinaHotel: 'Shaza Al Madina',
       features: ['Daily Breakfast Buffet', 'Private Transport', 'Guided Ziyarat', 'Visa Processing'],
-      image: 'https://picsum.photos/600/408',
+      image: 'https://picsum.photos/600/410',
       aiHint: 'comfortable hotel room'
+    },
+    {
+      name: '14-Day Executive Umrah',
+      slug: '14-day-executive-umrah',
+      price: '$3,100',
+      makkahHotel: 'Mövenpick Hotel & Residences Hajar Tower Makkah',
+      madinaHotel: 'Dar Al Hijra InterContinental',
+      features: ['Breakfast & Dinner', 'Upgraded Transport', 'Personalized Ziyarat', 'Fast-Track Visa'],
+      image: 'https://picsum.photos/600/411',
+      aiHint: 'executive hotel lounge'
     },
   ],
    '3-star': [
     {
-      name: '12-Day Standard Umrah',
-      slug: '12-day-standard-umrah',
+      name: '7-Day Value Umrah',
+      slug: '7-day-value-umrah',
+      price: '$1,600',
+      makkahHotel: '3-Star Hotel (400m from Haram)',
+      madinaHotel: '3-Star Hotel (250m from Masjid Nabawi)',
+      features: ['Breakfast Included', 'Group Transport', 'Guided Ziyarat', 'Visa Assistance'],
+      image: 'https://picsum.photos/600/412',
+      aiHint: 'clean hotel room'
+    },
+    {
+      name: '10-Day Standard Umrah',
+      slug: '10-day-standard-umrah',
       price: '$1,950',
       makkahHotel: '3-Star Hotel (450m from Haram)',
       madinaHotel: '3-Star Hotel (300m from Masjid Nabawi)',
@@ -61,8 +111,38 @@ const packagesData = {
       image: 'https://picsum.photos/600/401',
       aiHint: 'modern hotel Mecca',
     },
+    {
+      name: '12-Day Classic Umrah',
+      slug: '12-day-classic-umrah',
+      price: '$2,200',
+      makkahHotel: 'Al Ebaa Hotel',
+      madinaHotel: 'Elaf Al Bustan Hotel',
+      features: ['Breakfast Included', 'Group Transport', 'Guided Ziyarat', 'Umrah Seminars'],
+      image: 'https://picsum.photos/600/413',
+      aiHint: 'simple hotel room'
+    },
+    {
+      name: '15-Day Extended Umrah',
+      slug: '15-day-extended-umrah',
+      price: '$2,500',
+      makkahHotel: 'Nawazi Watheer Hotel',
+      madinaHotel: 'Al Nokhba Royal Inn',
+      features: ['Breakfast Included', 'Shared Transport', 'Full Ziyarat Program', 'Spiritual Guidance'],
+      image: 'https://picsum.photos/600/414',
+      aiHint: 'pilgrims walking'
+    },
   ],
   'economy': [
+    {
+      name: '10-Day Budget Umrah',
+      slug: '10-day-budget-umrah',
+      price: '$1,350',
+      makkahHotel: 'Hotel (700m from Haram)',
+      madinaHotel: 'Hotel (550m from Masjid Nabawi)',
+      features: ['Room Only', 'Group Transport', 'Guided Ziyarat', 'Affordable Accommodation'],
+      image: 'https://picsum.photos/600/415',
+      aiHint: 'group pilgrims'
+    },
     {
       name: '14-Day Economy Umrah',
       slug: '14-day-economy-umrah',
@@ -72,6 +152,26 @@ const packagesData = {
       features: ['Makkah & Madinah Stay', 'Group Transport', 'Guided Ziyarat', 'Affordable Accommodation'],
       image: 'https://picsum.photos/600/400',
       aiHint: 'pilgrims praying',
+    },
+    {
+      name: '20-Day Saver Umrah',
+      slug: '20-day-saver-umrah',
+      price: '$1,800',
+      makkahHotel: 'Hotel (800m from Haram)',
+      madinaHotel: 'Hotel (600m from Masjid Nabawi)',
+      features: ['Shared Rooms', 'Basic Transport', 'Guided Ziyarat', 'Visa Support'],
+      image: 'https://picsum.photos/600/416',
+      aiHint: 'crowd praying'
+    },
+    {
+      name: '28-Day Ramadan Umrah (Economy)',
+      slug: '28-day-ramadan-umrah-economy',
+      price: '$2,200',
+      makkahHotel: 'Hotel (900m from Haram)',
+      madinaHotel: 'Hotel (700m from Masjid Nabawi)',
+      features: ['Full Ramadan Stay', 'Group Transport', 'Iftar & Suhoor Arrangement', 'Spiritual Lectures'],
+      image: 'https://picsum.photos/600/417',
+      aiHint: 'iftar meal'
     },
   ]
 };
@@ -100,7 +200,7 @@ const PackageCard = ({ pkg }: { pkg: any }) => (
         </div>
       </div>
       <ul className="space-y-2 text-muted-foreground text-sm">
-        {pkg.features.map((feature: string) => (
+        {pkg.features.slice(0, 2).map((feature: string) => (
           <li key={feature} className="flex items-center">
             <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
             <span>{feature}</span>
@@ -136,26 +236,13 @@ const Packages = () => {
             <TabsTrigger value="economy">Economy</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="5-star">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {packagesData['5-star'].map((pkg) => <PackageCard key={pkg.slug} pkg={pkg} />)}
-            </div>
-          </TabsContent>
-          <TabsContent value="4-star">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {packagesData['4-star'].map((pkg) => <PackageCard key={pkg.slug} pkg={pkg} />)}
-            </div>
-          </TabsContent>
-          <TabsContent value="3-star">
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {packagesData['3-star'].map((pkg) => <PackageCard key={pkg.slug} pkg={pkg} />)}
-            </div>
-          </TabsContent>
-           <TabsContent value="economy">
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {packagesData['economy'].map((pkg) => <PackageCard key={pkg.slug} pkg={pkg} />)}
-            </div>
-          </TabsContent>
+          {Object.keys(packagesData).map(category => (
+            <TabsContent key={category} value={category}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    {(packagesData as any)[category].map((pkg: any) => <PackageCard key={pkg.slug} pkg={pkg} />)}
+                </div>
+            </TabsContent>
+          ))}
         </Tabs>
       </div>
     </section>
