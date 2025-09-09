@@ -50,15 +50,15 @@ const Header = () => {
   };
   
   const TopBar = () => (
-    <div className="bg-background/80 text-foreground transition-all duration-300">
+    <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-background shadow-md">
         <div className="container flex h-10 items-center justify-between text-xs">
-            <div className="font-light text-muted-foreground">Your Trusted Umrah & Hajj Partner</div>
-            <div className="flex items-center gap-4">
-                <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline text-muted-foreground">
+            <div className="font-semibold text-emerald-900/80">Your Trusted Umrah & Hajj Partner</div>
+            <div className="flex items-center gap-4 text-emerald-900">
+                <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline">
                     <Phone size={14}/>
                     <span>+1 (234) 567-890</span>
                 </a>
-                 <a href="mailto:info@baitullahtravels.com" className="flex items-center gap-1 hover:underline text-muted-foreground">
+                 <a href="mailto:info@baitullahtravels.com" className="flex items-center gap-1 hover:underline">
                     <Mail size={14}/>
                     <span>info@baitullahtravels.com</span>
                 </a>
