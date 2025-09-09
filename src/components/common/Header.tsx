@@ -52,9 +52,9 @@ const Header = () => {
   
   const TopBar = () => (
     <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-background shadow-md">
-        <div className="container flex h-auto min-h-10 flex-col items-start justify-center gap-1 py-2 text-xs sm:flex-row sm:items-center sm:justify-between">
-            <div className="font-semibold text-black/80 text-center sm:text-left">Your Trusted Umrah & Hajj Partner</div>
-            <div className="flex flex-col items-start gap-1 text-black sm:flex-row sm:items-center sm:gap-4">
+        <div className="container flex h-auto min-h-10 items-center justify-center gap-1 py-2 text-xs sm:justify-between">
+            <div className="font-semibold text-black/80 hidden sm:block">Your Trusted Umrah & Hajj Partner</div>
+            <div className="flex flex-row items-center gap-4 text-black">
                 <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline">
                     <Phone size={14}/>
                     <span className="text-black">_1 (234) 567-890</span>

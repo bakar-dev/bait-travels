@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -83,8 +84,8 @@ const Hero = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute left-4 z-20 text-white" />
-        <CarouselNext className="absolute right-4 z-20 text-white" />
+        <CarouselPrevious className="absolute left-4 z-20 text-white hidden sm:flex" />
+        <CarouselNext className="absolute right-4 z-20 text-white hidden sm:flex" />
       </Carousel>
     </section>
   );
