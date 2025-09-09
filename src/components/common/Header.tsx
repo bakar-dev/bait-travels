@@ -84,7 +84,7 @@ const Header = () => {
         <div className="hidden md:flex items-center justify-end space-x-2">
             <ThemeToggle />
             <Link href="/umrah-enquiry">
-                <Button className="animate-bounce">
+                <Button>
                     <HelpCircle className="mr-2 h-4 w-4"/>
                     Umrah Enquiry
                 </Button>
