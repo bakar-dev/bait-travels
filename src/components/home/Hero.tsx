@@ -43,7 +43,7 @@ const heroSlides = [
 
 const Hero = () => {
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: false })
   )
 
   return (
@@ -52,8 +52,6 @@ const Hero = () => {
         className="w-full"
         plugins={[plugin.current]}
         opts={{ loop: true }}
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
       >
         <CarouselContent>
           {heroSlides.map((slide, index) => (
