@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { format } from "date-fns";
-import { CalendarIcon, Users, Plane, Hotel, Check, ChevronsUpDown } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { sendUmrahEnquiry } from "@/app/actions";
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -43,17 +44,25 @@ const UmrahEnquiryForm = () => {
       children: 0,
       infants: 0,
       packageType: "4-Star",
+      message: ""
     },
   });
 
   const onSubmit = async (data: FormData) => {
-    console.log(data);
-    // Here you would typically send the data to your backend or a service like EmailJS
-    toast({
-      title: "Enquiry Submitted!",
-      description: "Thank you for your interest. We will contact you shortly with a customized plan.",
-    });
-    form.reset();
+    const result = await sendUmrahEnquiry(data);
+    if (result.success) {
+      toast({
+        title: "Enquiry Submitted!",
+        description: "Thank you for your interest. We will contact you shortly with a customized plan.",
+      });
+      form.reset();
+    } else {
+       toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: result.error || "Could not submit your enquiry. Please try again.",
+      });
+    }
   };
 
   return (
