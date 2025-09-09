@@ -5,7 +5,7 @@ import { Phone } from "lucide-react";
 
 const FloatingActions = () => {
   return (
-    <div className="fixed bottom-24 md:bottom-6 right-6 z-50 flex flex-col items-center gap-4">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-4">
       {/* WhatsApp */}
       <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
         <Button size="icon" className="rounded-full h-16 w-16 bg-green-500 hover:bg-green-600 shadow-lg animate-bounce" style={{ animationDelay: '0.1s' }}>
@@ -16,7 +16,7 @@ const FloatingActions = () => {
 
       {/* Phone Call */}
       <a href="tel:+1234567890">
-        <Button size="icon" className="rounded-full h-16 w-16 bg-accent hover:bg-accent/90 shadow-lg animate-bounce" style={{ animationDelay: '0.2s' }}>
+        <Button size="icon" className="rounded-full h-16 w-16 bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-500 text-white shadow-lg animate-bounce" style={{ animationDelay: '0.2s' }}>
           <Phone className="h-8 w-8" />
           <span className="sr-only">Call Us</span>
         </Button>
