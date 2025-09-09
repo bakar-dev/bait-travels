@@ -23,7 +23,6 @@
     --border: 210 10% 80%;
     --input: 210 10% 80%;
     --ring: 158 53% 20%;
-    --animation-border-color: hsl(158 53% 20%); /* dark green */
   }
  
   .dark {
@@ -46,7 +45,6 @@
     --border: 210 10% 23%;
     --input: 210 10% 23%;
     --ring: 165 91% 20%;
-    --animation-border-color: hsl(158 53% 20%); /* dark green */
   }
 }
  
@@ -77,31 +75,6 @@
     to {
       transform: rotate(360deg);
     }
-  }
-
-  .animated-border {
-    position: relative;
-    overflow: hidden;
-    border-radius: 0.5rem; /* Match button's border-radius */
-    padding: 2px; /* This controls the thickness of the border */
-  }
-
-  .animated-border::before {
-    content: '';
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    z-index: -1;
-    background: conic-gradient(
-      from 180deg at 50% 50%,
-      transparent 0deg,
-      var(--animation-border-color) 30deg,
-      transparent 60deg,
-      transparent 360deg
-    );
-    animation: rotate 4s linear infinite;
   }
 
    .animated-border > * {

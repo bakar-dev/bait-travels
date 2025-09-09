@@ -83,14 +83,12 @@ const Header = () => {
         </nav>
         <div className="hidden md:flex items-center justify-end space-x-4">
             <ThemeToggle />
-            <div className="relative animated-border">
-              <Link href="/umrah-enquiry">
-                  <Button className="relative bg-emerald-100 dark:bg-emerald-900/80 hover:bg-emerald-200 dark:hover:bg-emerald-900 text-primary dark:text-primary-foreground">
-                      <HelpCircle className="mr-2 h-4 w-4"/>
-                      Umrah Enquiry
-                  </Button>
-              </Link>
-            </div>
+            <Button asChild className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">
+                <Link href="/umrah-enquiry">
+                    <HelpCircle className="mr-2 h-4 w-4"/>
+                    Umrah Enquiry
+                </Link>
+            </Button>
         </div>
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
