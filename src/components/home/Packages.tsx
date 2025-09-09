@@ -184,18 +184,18 @@ const PackageCard = ({ pkg }: { pkg: any }) => (
       </div>
     </CardHeader>
     <CardContent className="flex-grow p-6">
-      <CardTitle className="mb-4 text-xl font-headline text-primary">{pkg.name}</CardTitle>
+      <CardTitle className="mb-4 text-lg font-headline text-primary">{pkg.name}</CardTitle>
       <div className="space-y-3 text-muted-foreground mb-4">
         <div className="flex items-start">
           <Hotel className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" />
           <div>
-            <p className="font-semibold">Makkah: {pkg.makkahHotel}</p>
+            <p className="font-semibold text-sm">Makkah: {pkg.makkahHotel}</p>
           </div>
         </div>
         <div className="flex items-start">
           <Hotel className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" />
           <div>
-            <p className="font-semibold">Madina: {pkg.madinaHotel}</p>
+            <p className="font-semibold text-sm">Madina: {pkg.madinaHotel}</p>
           </div>
         </div>
       </div>
