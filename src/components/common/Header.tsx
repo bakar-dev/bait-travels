@@ -83,7 +83,7 @@ const Header = () => {
         </nav>
         <div className="hidden md:flex items-center justify-end space-x-4">
             <ThemeToggle />
-            <Button asChild className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">
+            <Button asChild className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400">
                 <Link href="/umrah-enquiry">
                     <HelpCircle className="mr-2 h-4 w-4"/>
                     Umrah Enquiry
