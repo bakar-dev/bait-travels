@@ -23,6 +23,7 @@
     --border: 210 10% 80%;
     --input: 210 10% 80%;
     --ring: 158 53% 20%;
+    --animation-border-color: hsl(var(--primary));
   }
  
   .dark {
@@ -45,6 +46,7 @@
     --border: 210 10% 23%;
     --input: 210 10% 23%;
     --ring: 165 91% 20%;
+    --animation-border-color: hsl(var(--accent));
   }
 }
  
@@ -93,7 +95,7 @@
     z-index: -1;
     background: conic-gradient(
       transparent,
-      #FFD700,
+      var(--animation-border-color),
       transparent 30%
     );
     animation: rotate 4s linear infinite;
