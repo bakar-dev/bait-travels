@@ -8,6 +8,7 @@ import Blog from '@/components/home/Blog';
 import Contact from '@/components/home/Contact';
 import FloatingActions from '@/components/common/FloatingActions';
 import QuickEnquiry from '@/components/home/QuickEnquiry';
+import WhyUs from '@/components/home/WhyUs';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <QuickEnquiry />
         <Packages />
+        <WhyUs />
         <About />
         <Blog />
         <Contact />
