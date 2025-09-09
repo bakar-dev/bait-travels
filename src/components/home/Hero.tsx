@@ -65,7 +65,7 @@ const Hero = () => {
                     className="object-cover"
                     priority={index === 0}
                   />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-amber-900/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-yellow-900/40" />
                 <div className="relative z-10 text-center container px-4">
                   <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tight mb-4 drop-shadow-md">
                     {slide.title}
