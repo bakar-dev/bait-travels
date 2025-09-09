@@ -95,8 +95,9 @@
     z-index: -1;
     background: conic-gradient(
       transparent,
-      var(--animation-border-color),
-      transparent 30%
+      transparent,
+      transparent,
+      var(--animation-border-color)
     );
     animation: rotate 4s linear infinite;
   }
