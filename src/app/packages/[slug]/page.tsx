@@ -38,25 +38,27 @@ const allPackages: { [key: string]: any } = {
 
 export default function PackageDetailPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const pkg = allPackages[slug];
-
-  if (!pkg) {
-    return (
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-grow flex items-center justify-center">
-            <div className="text-center">
-                <h1 className="text-4xl font-bold">Package not found</h1>
-                <p className="text-muted-foreground mt-4">The package you are looking for does not exist.</p>
-                <Link href="/#packages">
-                    <Button className="mt-6">Back to Packages</Button>
-                </Link>
-            </div>
-        </main>
-        <Footer />
-      </div>
-    )
-  }
+  // A real app would fetch the package details based on the slug
+  // For this demo, we'll create a dummy package if it doesn't exist
+  const pkg = allPackages[slug] || {
+    name: 'Umrah Package',
+    slug: slug,
+    price: '$1,999',
+    duration: '12 Days, 11 Nights',
+    rating: 4,
+    makkahHotel: '4-Star Hotel near Haram',
+    madinaHotel: '4-Star Hotel in Madinah',
+    features: ['Breakfast Included', 'Shared Transport', 'Guided Ziyarat', 'Visa Processing'],
+    image: 'https://picsum.photos/1200/801',
+    aiHint: 'pilgrims praying',
+    itinerary: [
+        'Day 1: Arrival and transfer to Makkah.',
+        'Day 2-6: Makkah - Umrah and personal worship.',
+        'Day 7: Travel to Madinah.',
+        'Day 8-11: Madinah - Prayers and Ziyarat.',
+        'Day 12: Departure.'
+    ]
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -135,8 +137,8 @@ export default function PackageDetailPage({ params }: { params: { slug: string }
                         </CardContent>
                     </Card>
 
-                    <Button className="w-full text-lg py-6">
-                        Enquire Now
+                    <Button asChild className="w-full text-lg py-6">
+                        <Link href="/umrah-enquiry">Enquire Now</Link>
                     </Button>
                 </div>
             </div>

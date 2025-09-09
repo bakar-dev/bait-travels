@@ -18,7 +18,7 @@ const heroSlides = [
   {
     title: 'Embark on a Sacred Journey',
     description: 'Experience the spiritual journey of a lifetime with our tailored Umrah and Hajj packages.',
-    image: 'https://picsum.photos/1920/1080',
+    image: 'https://picsum.photos/1920/1080?random=1',
     aiHint: 'kaaba mecca',
     buttonLabel: 'Explore Packages',
     buttonLink: '#packages',
@@ -26,7 +26,7 @@ const heroSlides = [
   {
     title: 'Discover Our 5-Star Packages',
     description: 'Travel with comfort and peace of mind. Luxurious accommodations close to the Haram.',
-    image: 'https://picsum.photos/1920/1081',
+    image: 'https://picsum.photos/1920/1081?random=2',
     aiHint: 'luxury hotel Mecca',
     buttonLabel: 'View 5-Star Deals',
     buttonLink: '#packages',
@@ -34,7 +34,7 @@ const heroSlides = [
   {
     title: 'Your Trusted Umrah Partner',
     description: 'Years of experience in providing seamless and meaningful pilgrimage journeys.',
-    image: 'https://picsum.photos/1920/1082',
+    image: 'https://picsum.photos/1920/1082?random=3',
     aiHint: 'happy pilgrims',
     buttonLabel: 'About Us',
     buttonLink: '#about',
@@ -47,11 +47,11 @@ const Hero = () => {
   )
 
   return (
-    <section id="home" className="relative w-full flex items-center justify-center text-primary-foreground -mt-16">
-      <Carousel 
-        className="w-full" 
-        opts={{ loop: true }}
+    <section id="home" className="relative w-full flex items-center justify-center text-primary-foreground -mt-26">
+       <Carousel
+        className="w-full"
         plugins={[plugin.current]}
+        opts={{ loop: true }}
         onMouseEnter={plugin.current.stop}
         onMouseLeave={plugin.current.reset}
       >

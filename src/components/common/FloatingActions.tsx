@@ -5,11 +5,13 @@ import { Phone, MessageSquare, HelpCircle } from "lucide-react";
 const FloatingActions = () => {
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-center gap-3">
-       {/* Online Chat - Placeholder */}
-      <Button size="icon" className="rounded-full h-14 w-14 bg-blue-600 hover:bg-blue-700 shadow-lg">
-        <MessageSquare className="h-7 w-7" />
-        <span className="sr-only">Online Chat</span>
-      </Button>
+       {/* Online Chat */}
+      <Link href="/umrah-enquiry">
+        <Button size="icon" className="rounded-full h-14 w-14 bg-blue-600 hover:bg-blue-700 shadow-lg">
+          <MessageSquare className="h-7 w-7" />
+          <span className="sr-only">Online Chat</span>
+        </Button>
+      </Link>
 
       {/* WhatsApp */}
       <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">

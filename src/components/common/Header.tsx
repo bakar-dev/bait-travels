@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Landmark, Menu, X, HelpCircle } from 'lucide-react';
+import { Landmark, Menu, X, HelpCircle, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -24,26 +24,23 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Set initial state
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const showTopBar = pathname === '/' && !isScrolled;
+
   const NavLink = ({ href, label }: { href: string; label: string }) => {
     const isActive = pathname === href;
-    const isHomeHashLink = href.startsWith('/#') && pathname === '/';
-    
-    // Special case for root home link
-    const isCurrent = isHomeHashLink ? (href === '/#') : isActive;
-
     return (
       <Link href={href} passHref>
         <span
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            isCurrent ? "text-primary" : "text-foreground/80"
+            isActive ? "text-primary" : "text-foreground/80"
           )}
           onClick={() => setOpen(false)}
         >
@@ -52,13 +49,32 @@ const Header = () => {
       </Link>
     );
   };
+  
+  const TopBar = () => (
+    <div className="bg-primary text-primary-foreground transition-all duration-300">
+        <div className="container flex h-10 items-center justify-between text-xs">
+            <div className="font-light">Your Trusted Umrah & Hajj Partner</div>
+            <div className="flex items-center gap-4">
+                <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline">
+                    <Phone size={14}/>
+                    <span>+1 (234) 567-890</span>
+                </a>
+                 <a href="mailto:info@baitullahtravels.com" className="flex items-center gap-1 hover:underline">
+                    <Mail size={14}/>
+                    <span>info@baitullahtravels.com</span>
+                </a>
+            </div>
+        </div>
+    </div>
+  )
 
   return (
     <header className={cn(
       "sticky top-0 z-40 w-full transition-all duration-300",
-      isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent text-primary-foreground",
-      pathname !== '/' && "bg-background/95 backdrop-blur-sm border-b text-foreground"
+      isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent",
+      pathname !== '/' && "bg-background/95 backdrop-blur-sm border-b"
     )}>
+       {showTopBar && <TopBar />}
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Landmark className={cn("h-6 w-6", (isScrolled || pathname !== '/') ? 'text-primary' : 'text-white' )}/>
@@ -78,7 +94,7 @@ const Header = () => {
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className={cn((isScrolled || pathname !== '/') ? 'text-primary' : 'text-white hover:text-primary')}>
                 <Menu />
                 <span className="sr-only">Open Menu</span>
               </Button>
