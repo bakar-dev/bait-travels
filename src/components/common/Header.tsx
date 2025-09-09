@@ -7,6 +7,7 @@ import { Landmark, Menu, X, HelpCircle, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -39,7 +40,6 @@ const Header = () => {
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
             isActive ? "text-primary" : "text-foreground/80",
-            (isScrolled || pathname !== '/') ? 'text-foreground/80' : 'text-white'
           )}
           onClick={() => setOpen(false)}
         >
@@ -70,8 +70,7 @@ const Header = () => {
   return (
     <header className={cn(
       "sticky top-0 z-40 w-full transition-all duration-300",
-       isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent",
-       pathname !== '/' && "bg-background/95 backdrop-blur-sm border-b"
+       "bg-background/95 backdrop-blur-sm border-b"
     )}>
        <TopBar />
       <div className="container flex h-16 items-center">
@@ -83,6 +82,7 @@ const Header = () => {
           {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
         </nav>
         <div className="hidden md:flex items-center justify-end space-x-2">
+            <ThemeToggle />
             <Link href="/umrah-enquiry">
                 <Button>
                     <HelpCircle className="mr-2 h-4 w-4"/>
@@ -93,7 +93,7 @@ const Header = () => {
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn(isScrolled || pathname !== '/' ? 'text-primary' : 'text-white hover:text-primary')}>
+              <Button variant="ghost" size="icon" >
                 <Menu />
                 <span className="sr-only">Open Menu</span>
               </Button>
@@ -105,6 +105,7 @@ const Header = () => {
                   <span className="font-bold">Baitullah Travels</span>
                 </Link>
                 {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
+                <ThemeToggle />
                 <Button asChild>
                     <Link href="/umrah-enquiry">Umrah Enquiry</Link>
                 </Button>
