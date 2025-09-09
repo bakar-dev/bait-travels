@@ -23,7 +23,7 @@
     --border: 210 10% 80%;
     --input: 210 10% 80%;
     --ring: 158 53% 20%;
-    --animation-border-color: hsl(var(--primary));
+    --animation-border-color: hsl(80 61% 50%); /* lime green */
   }
  
   .dark {
@@ -46,7 +46,7 @@
     --border: 210 10% 23%;
     --input: 210 10% 23%;
     --ring: 165 91% 20%;
-    --animation-border-color: hsl(var(--accent));
+    --animation-border-color: hsl(80 61% 50%); /* lime green */
   }
 }
  
