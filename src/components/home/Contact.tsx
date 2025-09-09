@@ -1,13 +1,54 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+    
+    try {
+      const response = await fetch("https://formsubmit.co/baker.pucit@gmail.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        },
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Thank you for reaching out. We will get back to you shortly.",
+        });
+        (event.target as HTMLFormElement).reset();
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-16 sm:py-24 parallax-bg">
       <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
@@ -20,13 +61,7 @@ const Contact = () => {
         </div>
         <Card className="max-w-2xl mx-auto shadow-lg bg-card/80 backdrop-blur-sm">
           <CardContent className="p-6 md:p-8">
-            <form
-              action="https://formsubmit.co/your-email@example.com" // Replace with your email address
-              method="POST"
-              className="space-y-6"
-            >
-              {/* Optional: Redirect to a thank you page */}
-              <input type="hidden" name="_next" value="https://your-domain.co/" /> 
+            <form onSubmit={handleSubmit} className="space-y-6">
               {/* Optional: Disable Captcha */}
               <input type="hidden" name="_captcha" value="false" />
 
@@ -45,9 +80,18 @@ const Contact = () => {
                 <Textarea id="message" name="message" placeholder="How can we help you?" rows={6} required />
               </div>
 
-              <Button type="submit" className="w-full text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">
-                <Send className="mr-2 h-4 w-4" />
-                Send Message
+              <Button type="submit" className="w-full text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </CardContent>

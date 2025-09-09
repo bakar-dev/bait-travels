@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
+import { Calendar as CalendarIcon, Loader2 } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
@@ -17,24 +17,57 @@ import { cn } from "@/lib/utils";
 const UmrahEnquiryForm = () => {
     const { toast } = useToast();
     const [departureDate, setDepartureDate] = useState<Date | undefined>();
-
-    // This client-side handler is kept for handling date state, but submission is a standard form post.
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-       // The form will submit via its action attribute. We can add client-side validation here if needed.
-       // For this setup, we'll let the native form submission handle it.
+       event.preventDefault();
+       setIsSubmitting(true);
+
+       const formData = new FormData(event.currentTarget);
+       
+       // Manually append date as FormData doesn't pick it up from the hidden input with client-side state
+       if (departureDate) {
+           formData.set("departureDate", format(departureDate, "PPP"));
+       } else {
+           formData.set("departureDate", "Not specified");
+       }
+       
+       try {
+         const response = await fetch("https://formsubmit.co/your-email@example.com", {
+           method: "POST",
+           body: formData,
+           headers: {
+             'Accept': 'application/json'
+           },
+         });
+
+         if (response.ok) {
+           toast({
+             title: "Enquiry Sent!",
+             description: "Thank you for your interest. We will get back to you with a quote shortly.",
+           });
+           (event.target as HTMLFormElement).reset();
+           setDepartureDate(undefined);
+         } else {
+           throw new Error("Form submission failed");
+         }
+       } catch (error) {
+         console.error(error);
+         toast({
+           variant: "destructive",
+           title: "Uh oh! Something went wrong.",
+           description: "There was a problem with your request. Please try again.",
+         });
+       } finally {
+         setIsSubmitting(false);
+       }
     };
 
 
   return (
     <Card className="max-w-4xl mx-auto shadow-lg">
       <CardContent className="p-6 md:p-8">
-        <form 
-            action="https://formsubmit.co/your-email@example.com" // Replace with your email address
-            method="POST" 
-            className="space-y-6"
-        >
-             {/* Optional: Redirect to a thank you page */}
-             <input type="hidden" name="_next" value="https://your-domain.co/" /> 
+        <form onSubmit={handleSubmit} className="space-y-6">
              {/* Optional: Disable Captcha */}
              <input type="hidden" name="_captcha" value="false" />
 
@@ -56,8 +89,6 @@ const UmrahEnquiryForm = () => {
                 </div>
                 <div className="flex flex-col space-y-2">
                     <Label>Preferred Departure Date</Label>
-                     {/* Hidden input to pass date value through the standard form submission */}
-                    <input type="hidden" name="departureDate" value={departureDate ? format(departureDate, "PPP") : "Not specified"} />
                     <Popover>
                       <PopoverTrigger asChild>
                           <Button
@@ -124,8 +155,15 @@ const UmrahEnquiryForm = () => {
                 />
             </div>
 
-            <Button type="submit" className="w-full text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">
-              Get a Quote
+            <Button type="submit" className="w-full text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900" disabled={isSubmitting}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Sending Enquiry...
+                </>
+              ) : (
+                "Get a Quote"
+              )}
             </Button>
         </form>
       </CardContent>
