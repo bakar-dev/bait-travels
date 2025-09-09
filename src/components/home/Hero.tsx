@@ -34,7 +34,7 @@ const heroSlides = [
   {
     title: 'Your Trusted Umrah Partner',
     description: 'Years of experience in providing seamless and meaningful pilgrimage journeys.',
-    image: 'https://picsum.photos/1920/1082?random=3',
+    image: 'https://picsum.photos/1920/1082',
     aiHint: 'happy pilgrims',
     buttonLabel: 'About Us',
     buttonLink: '#about',
