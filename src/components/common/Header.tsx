@@ -74,14 +74,20 @@ const Header = () => {
     )}>
        <TopBar />
       <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Landmark className={cn("h-6 w-6", 'text-primary' )}/>
-          <span className={cn("font-bold text-lg", 'text-foreground')}>Baitullah Travels</span>
-        </Link>
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium flex-1">
-          {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
+        <div className="flex-1 flex justify-start">
+            <Link href="/" className="flex items-center space-x-2">
+              <Landmark className={cn("h-6 w-6", 'text-primary' )}/>
+              <span className={cn("font-bold text-lg", 'text-foreground')}>Baitullah Travels</span>
+            </Link>
+        </div>
+        
+        <nav className="hidden md:flex items-center justify-center">
+          <div className="flex items-center space-x-6 text-sm font-medium">
+            {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
+          </div>
         </nav>
-        <div className="hidden md:flex items-center justify-end space-x-4">
+
+        <div className="flex-1 hidden md:flex items-center justify-end space-x-4">
             <ThemeToggle />
             <Button asChild className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400">
                 <Link href="/umrah-enquiry">
@@ -90,6 +96,7 @@ const Header = () => {
                 </Link>
             </Button>
         </div>
+        
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
