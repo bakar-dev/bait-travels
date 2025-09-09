@@ -83,9 +83,9 @@ const Header = () => {
         </nav>
         <div className="hidden md:flex items-center justify-end space-x-4">
             <ThemeToggle />
-            <div className="relative p-px animated-border">
+            <div className="relative animated-border">
               <Link href="/umrah-enquiry">
-                  <Button className="relative">
+                  <Button className="relative bg-background hover:bg-background/80 text-foreground">
                       <HelpCircle className="mr-2 h-4 w-4"/>
                       Umrah Enquiry
                   </Button>

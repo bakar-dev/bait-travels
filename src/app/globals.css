@@ -83,6 +83,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 0.5rem; /* Match button's border-radius */
+    padding: 2px; /* This controls the thickness of the border */
   }
 
   .animated-border::before {
@@ -94,11 +95,16 @@
     left: -50%;
     z-index: -1;
     background: conic-gradient(
-      transparent,
-      transparent,
-      transparent,
-      var(--animation-border-color)
+      from 180deg at 50% 50%,
+      transparent 0deg,
+      var(--animation-border-color) 30deg,
+      transparent 60deg,
+      transparent 360deg
     );
     animation: rotate 4s linear infinite;
+  }
+
+   .animated-border > * {
+    border-radius: calc(0.5rem - 2px); /* inner radius should be outer radius - padding */
   }
 }
