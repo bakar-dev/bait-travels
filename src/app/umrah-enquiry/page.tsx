@@ -7,7 +7,7 @@ export default function UmrahEnquiryPage() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-grow py-16 sm:py-24">
+      <main className="flex-grow py-16 sm:py-24 bg-secondary/30">
         <div className="container">
           <div className="text-center mb-12">
             <h1 className="font-arabic text-4xl md:text-5xl font-bold text-primary mb-4">Umrah Enquiry</h1>
