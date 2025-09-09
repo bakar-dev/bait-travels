@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -51,9 +52,9 @@ const Header = () => {
   
   const TopBar = () => (
     <div className="bg-gradient-to-r from-amber-400 via-yellow-500 to-amber-500 text-background shadow-md">
-        <div className="container flex h-10 items-center justify-between text-xs">
-            <div className="font-semibold text-black/80">Your Trusted Umrah & Hajj Partner</div>
-            <div className="flex items-center gap-4 text-black">
+        <div className="container flex h-auto min-h-10 flex-col items-start justify-center gap-1 py-2 text-xs sm:flex-row sm:items-center sm:justify-between">
+            <div className="font-semibold text-black/80 text-center sm:text-left">Your Trusted Umrah & Hajj Partner</div>
+            <div className="flex flex-col items-start gap-1 text-black sm:flex-row sm:items-center sm:gap-4">
                 <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline">
                     <Phone size={14}/>
                     <span className="text-black">_1 (234) 567-890</span>
@@ -77,7 +78,7 @@ const Header = () => {
         <div className="flex-1 flex justify-start">
             <Link href="/" className="flex items-center space-x-2">
               <Landmark className={cn("h-6 w-6", 'text-primary' )}/>
-              <span className={cn("font-bold text-lg", 'text-foreground')}>Baitullah Travels</span>
+              <span className={cn("font-bold text-lg whitespace-nowrap", 'text-foreground')}>Baitullah Travels</span>
             </Link>
         </div>
         
@@ -89,7 +90,7 @@ const Header = () => {
 
         <div className="flex-1 hidden md:flex items-center justify-end space-x-4">
             <ThemeToggle />
-            <Button asChild className="text-white bg-green-700 hover:bg-green-600">
+            <Button asChild className="text-white bg-green-700 hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-600">
                 <Link href="/umrah-enquiry">
                     <HelpCircle className="mr-2 h-4 w-4"/>
                     Umrah Enquiry
