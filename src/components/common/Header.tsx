@@ -30,9 +30,7 @@ const Header = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const showTopBar = pathname === '/' && !isScrolled;
-
+  
   const NavLink = ({ href, label }: { href: string; label: string }) => {
     const isActive = pathname === href;
     return (
@@ -40,7 +38,8 @@ const Header = () => {
         <span
           className={cn(
             "text-sm font-medium transition-colors hover:text-primary",
-            isActive ? "text-primary" : "text-foreground/80"
+            isActive ? "text-primary" : "text-foreground/80",
+            (isScrolled || pathname !== '/') ? 'text-foreground/80' : 'text-white'
           )}
           onClick={() => setOpen(false)}
         >
@@ -51,15 +50,15 @@ const Header = () => {
   };
   
   const TopBar = () => (
-    <div className="bg-primary text-primary-foreground transition-all duration-300">
+    <div className="bg-background/80 text-foreground transition-all duration-300">
         <div className="container flex h-10 items-center justify-between text-xs">
-            <div className="font-light">Your Trusted Umrah & Hajj Partner</div>
+            <div className="font-light text-muted-foreground">Your Trusted Umrah & Hajj Partner</div>
             <div className="flex items-center gap-4">
-                <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline">
+                <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline text-muted-foreground">
                     <Phone size={14}/>
                     <span>+1 (234) 567-890</span>
                 </a>
-                 <a href="mailto:info@baitullahtravels.com" className="flex items-center gap-1 hover:underline">
+                 <a href="mailto:info@baitullahtravels.com" className="flex items-center gap-1 hover:underline text-muted-foreground">
                     <Mail size={14}/>
                     <span>info@baitullahtravels.com</span>
                 </a>
@@ -71,14 +70,14 @@ const Header = () => {
   return (
     <header className={cn(
       "sticky top-0 z-40 w-full transition-all duration-300",
-      isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent",
-      pathname !== '/' && "bg-background/95 backdrop-blur-sm border-b"
+       isScrolled ? "bg-background/95 backdrop-blur-sm border-b" : "bg-transparent",
+       pathname !== '/' && "bg-background/95 backdrop-blur-sm border-b"
     )}>
-       {showTopBar && <TopBar />}
+       <TopBar />
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Landmark className={cn("h-6 w-6", (isScrolled || pathname !== '/') ? 'text-primary' : 'text-white' )}/>
-          <span className={cn("font-bold text-lg", (isScrolled || pathname !== '/') ? 'text-foreground' : 'text-white')}>Baitullah Travels</span>
+          <Landmark className={cn("h-6 w-6", 'text-primary' )}/>
+          <span className={cn("font-bold text-lg", 'text-foreground')}>Baitullah Travels</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium flex-1">
           {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
@@ -94,7 +93,7 @@ const Header = () => {
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn((isScrolled || pathname !== '/') ? 'text-primary' : 'text-white hover:text-primary')}>
+              <Button variant="ghost" size="icon" className={cn(isScrolled || pathname !== '/' ? 'text-primary' : 'text-white hover:text-primary')}>
                 <Menu />
                 <span className="sr-only">Open Menu</span>
               </Button>
