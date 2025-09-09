@@ -1,3 +1,4 @@
+
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
 import FloatingActions from '@/components/common/FloatingActions';
@@ -442,3 +443,12 @@ export default function PackageDetailPage({ params }: { params: { slug: string }
     </div>
   );
 }
+
+// Generate static paths for all packages
+export async function generateStaticParams() {
+  return allPackages.map(pkg => ({
+    slug: pkg.slug,
+  }));
+}
+
+    
