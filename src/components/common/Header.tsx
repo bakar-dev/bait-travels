@@ -81,14 +81,16 @@ const Header = () => {
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium flex-1">
           {navLinks.map((link) => <NavLink key={link.href} {...link} />)}
         </nav>
-        <div className="hidden md:flex items-center justify-end space-x-2">
+        <div className="hidden md:flex items-center justify-end space-x-4">
             <ThemeToggle />
-            <Link href="/umrah-enquiry">
-                <Button>
-                    <HelpCircle className="mr-2 h-4 w-4"/>
-                    Umrah Enquiry
-                </Button>
-            </Link>
+            <div className="relative p-px animated-border">
+              <Link href="/umrah-enquiry">
+                  <Button className="relative">
+                      <HelpCircle className="mr-2 h-4 w-4"/>
+                      Umrah Enquiry
+                  </Button>
+              </Link>
+            </div>
         </div>
         <div className="flex flex-1 items-center justify-end md:hidden">
           <Sheet open={open} onOpenChange={setOpen}>

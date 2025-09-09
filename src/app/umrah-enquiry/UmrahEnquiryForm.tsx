@@ -224,7 +224,7 @@ const UmrahEnquiryForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900 animate-pulse" disabled={form.formState.isSubmitting}>
+            <Button type="submit" className="w-full text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900" disabled={form.formState.isSubmitting}>
               {form.formState.isSubmitting ? "Submitting..." : "Get a Quote"}
             </Button>
           </form>
