@@ -3,27 +3,28 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { PACKAGE_IMAGES } from '@/lib/packages-data';
 
 const blogPosts = [
   {
     slug: '10-essential-items-to-pack-for-your-umrah-trip',
     title: '10 Essential Items to Pack for Your Umrah Trip',
     excerpt: 'Make sure you have everything you need for a comfortable and stress-free pilgrimage with our essential packing list.',
-    image: 'https://picsum.photos/600/403',
+    image:  PACKAGE_IMAGES[10],
     aiHint: 'travel luggage'
   },
   {
     slug: 'a-step-by-step-guide-to-performing-hajj',
     title: 'A Step-by-Step Guide to Performing Hajj',
     excerpt: 'Understand the rituals and steps of Hajj with our comprehensive guide, designed for first-time pilgrims.',
-    image: 'https://picsum.photos/600/404',
+    image:  PACKAGE_IMAGES[11],
     aiHint: 'compass qibla'
   },
   {
     slug: 'the-spiritual-significance-of-zamzam-water',
     title: 'The Spiritual Significance of Zamzam Water',
     excerpt: 'Learn about the history and virtues of the blessed water of Zamzam and its importance to pilgrims.',
-    image: 'https://picsum.photos/600/405',
+    image:  PACKAGE_IMAGES[12],
     aiHint: 'water spring'
   },
 ];

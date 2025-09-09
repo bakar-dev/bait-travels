@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Hotel, Plane, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { PACKAGE_IMAGES } from '@/lib/packages-data';
 
 const packagesData = {
   '5-star': [
@@ -18,7 +19,7 @@ const packagesData = {
       makkahHotel: 'Raffles Makkah Palace',
       madinaHotel: 'The Oberoi Madina',
       features: ['Full Board (Breakfast, Lunch, Dinner)', 'VIP Transport in a private car', 'Personal multilingual guide', 'Exclusive Ziyarat of historical sites', 'Umrah visa processing included', 'Special Umrah kit with essentials', 'Business Class Flights available on request'],
-      image: 'https://picsum.photos/1200/801',
+      image: PACKAGE_IMAGES[0],
       aiHint: 'luxury hotel Kaaba',
       itinerary: [
           'Day 1: Arrival in Jeddah, VIP transfer to Makkah hotel.',
@@ -39,7 +40,7 @@ const packagesData = {
       makkahHotel: '5-Star Hotel with Kaaba View',
       madinaHotel: '5-Star Hotel near Prophet\'s Mosque',
       features: ['Full Board (Breakfast, Lunch, Dinner)', 'VIP Transport in a private car', 'Personal multilingual guide', 'Exclusive Ziyarat of historical sites', 'Umrah visa processing included', 'Special Umrah kit with essentials'],
-      image: 'https://picsum.photos/1200/800',
+      image:  PACKAGE_IMAGES[1],
       aiHint: 'hotel suite luxury',
       itinerary: [
           'Day 1: Arrival in Jeddah, transfer to Makkah hotel.',
@@ -63,7 +64,7 @@ const packagesData = {
       makkahHotel: 'Clock Tower Complex Hotel',
       madinaHotel: 'Anwar Al Madinah Mövenpick',
       features: ['Full Board', 'Private Airport Transfer', 'Dedicated Concierge', 'Historical Tours', 'Visa Processing', 'Haram-view rooms'],
-      image: 'https://picsum.photos/1200/807',
+      image:  PACKAGE_IMAGES[2],
       aiHint: 'hotel lobby luxury',
       itinerary: [
           'Day 1-2: Arrival, check-in to Makkah Hotel, perform Umrah.',
@@ -83,7 +84,7 @@ const packagesData = {
       makkahHotel: 'Jabal Omar Hyatt Regency',
       madinaHotel: 'Pullman Zamzam Madina',
       features: ['All Inclusive', 'Business Class Flights', 'Helicopter Tour of Makkah', '24/7 Butler Service', 'Private Ziyarat', 'Fast-Track Immigration'],
-      image: 'https://picsum.photos/1200/808',
+      image:  PACKAGE_IMAGES[3],
       aiHint: 'luxury suite balcony',
       itinerary: [
           'Day 1-3: Arrival, Umrah, and rest in Makkah.',
@@ -105,7 +106,7 @@ const packagesData = {
       makkahHotel: 'Makkah Hotel & Towers',
       madinaHotel: 'Madinah Hilton',
       features: ['Breakfast & Dinner', 'Private Transport', 'Guided Ziyarat', 'Visa Processing', 'Umrah Kit'],
-      image: 'https://picsum.photos/1200/809',
+      image:  PACKAGE_IMAGES[4],
       aiHint: 'modern hotel room',
        itinerary: [
           'Day 1: Arrival and transfer to Makkah.',
@@ -125,7 +126,7 @@ const packagesData = {
       makkahHotel: '4-Star Hotel (250m from Haram)',
       madinaHotel: '4-Star Hotel (200m from Masjid Nabawi)',
       features: ['Breakfast & Dinner', 'Private Luxury Transport', 'Exclusive Ziyarat', 'Umrah Kit', 'Visa Processing'],
-      image: 'https://picsum.photos/1200/806',
+      image:  PACKAGE_IMAGES[5],
       aiHint: 'hotel suite',
        itinerary: [
           'Day 1-2: Arrival in Makkah, Umrah performance.',
@@ -145,7 +146,7 @@ const packagesData = {
       makkahHotel: 'Swissôtel Al Maqam Makkah',
       madinaHotel: 'Shaza Al Madina',
       features: ['Daily Breakfast Buffet', 'Private Transport', 'Guided Ziyarat', 'Visa Processing'],
-      image: 'https://picsum.photos/1200/810',
+      image:  PACKAGE_IMAGES[6],
       aiHint: 'comfortable hotel room',
        itinerary: [
           'Day 1-5: Makkah stay, including Umrah and Ziyarat.',
@@ -163,7 +164,7 @@ const packagesData = {
       makkahHotel: 'Mövenpick Hotel & Residences Hajar Tower Makkah',
       madinaHotel: 'Dar Al Hijra InterContinental',
       features: ['Breakfast & Dinner', 'Upgraded Transport', 'Personalized Ziyarat', 'Fast-Track Visa', 'Lounge Access'],
-      image: 'https://picsum.photos/1200/811',
+      image:  PACKAGE_IMAGES[7],
       aiHint: 'executive hotel lounge',
        itinerary: [
           'Day 1-6: Makkah stay with Umrah and comprehensive Ziyarat.',
@@ -183,7 +184,7 @@ const packagesData = {
       makkahHotel: '3-Star Hotel (400m from Haram)',
       madinaHotel: '3-Star Hotel (250m from Masjid Nabawi)',
       features: ['Breakfast Included', 'Group Transport', 'Guided Ziyarat', 'Visa Assistance'],
-      image: 'https://picsum.photos/1200/812',
+      image:  PACKAGE_IMAGES[8],
       aiHint: 'clean hotel room',
        itinerary: [
           'Day 1: Arrival, transfer to Makkah.',
@@ -203,7 +204,7 @@ const packagesData = {
       makkahHotel: '3-Star Hotel (450m from Haram)',
       madinaHotel: '3-Star Hotel (300m from Masjid Nabawi)',
       features: ['Breakfast Included', 'Private Transport', 'Dedicated Guide', 'Group Ziyarat', 'Visa Processing'],
-      image: 'https://picsum.photos/1200/801',
+      image:  PACKAGE_IMAGES[9],
       aiHint: 'modern hotel Mecca',
        itinerary: [
           'Day 1-4: Makkah stay, Umrah and personal worship.',
@@ -222,7 +223,7 @@ const packagesData = {
       makkahHotel: 'Al Ebaa Hotel',
       madinaHotel: 'Elaf Al Bustan Hotel',
       features: ['Breakfast Included', 'Group Transport', 'Guided Ziyarat', 'Umrah Seminars'],
-      image: 'https://picsum.photos/1200/813',
+      image:  PACKAGE_IMAGES[10],
       aiHint: 'simple hotel room',
        itinerary: [
           'Day 1-5: Makkah stay.',
@@ -241,7 +242,7 @@ const packagesData = {
       makkahHotel: 'Nawazi Watheer Hotel',
       madinaHotel: 'Al Nokhba Royal Inn',
       features: ['Breakfast Included', 'Shared Transport', 'Full Ziyarat Program', 'Spiritual Guidance'],
-      image: 'https://picsum.photos/1200/814',
+      image:  PACKAGE_IMAGES[11],
       aiHint: 'pilgrims walking',
        itinerary: [
           'Day 1-7: Makkah stay.',
@@ -261,7 +262,7 @@ const packagesData = {
       makkahHotel: 'Hotel (700m from Haram)',
       madinaHotel: 'Hotel (550m from Masjid Nabawi)',
       features: ['Room Only', 'Group Transport', 'Guided Ziyarat', 'Affordable Accommodation'],
-      image: 'https://picsum.photos/1200/815',
+      image:  PACKAGE_IMAGES[12],
       aiHint: 'group pilgrims',
        itinerary: [
           'Day 1-5: Makkah stay & Umrah.',
@@ -279,7 +280,7 @@ const packagesData = {
       makkahHotel: 'Hotel (650m from Haram)',
       madinaHotel: 'Hotel (500m from Masjid Nabawi)',
       features: ['Makkah & Madinah Stay', 'Group Transport', 'Guided Ziyarat', 'Affordable Accommodation'],
-      image: 'https://picsum.photos/1200/800',
+      image:  PACKAGE_IMAGES[13],
       aiHint: 'pilgrims praying',
        itinerary: [
           'Day 1-6: Makkah stay.',
@@ -297,7 +298,7 @@ const packagesData = {
       makkahHotel: 'Hotel (800m from Haram)',
       madinaHotel: 'Hotel (600m from Masjid Nabawi)',
       features: ['Shared Rooms', 'Basic Transport', 'Guided Ziyarat', 'Visa Support'],
-      image: 'https://picsum.photos/1200/816',
+      image:  PACKAGE_IMAGES[14],
       aiHint: 'crowd praying',
        itinerary: [
           'Day 1-10: Makkah stay.',
@@ -315,7 +316,7 @@ const packagesData = {
       makkahHotel: 'Hotel (900m from Haram)',
       madinaHotel: 'Hotel (700m from Masjid Nabawi)',
       features: ['Full Ramadan Stay', 'Group Transport', 'Iftar & Suhoor Arrangement', 'Spiritual Lectures'],
-      image: 'https://picsum.photos/1200/817',
+      image:  PACKAGE_IMAGES[15],
       aiHint: 'iftar meal',
        itinerary: [
           'Day 1-14: Makkah first half of Ramadan.',

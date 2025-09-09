@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import { PACKAGE_IMAGES } from '@/lib/packages-data';
 
 const packagesData = {
   '5-star': [
@@ -20,7 +21,7 @@ const packagesData = {
       makkahHotel: 'Raffles Makkah Palace',
       madinaHotel: 'The Oberoi Madina',
       features: ['Full Board', 'VIP Transport', 'Personal Guide', 'Exclusive Ziyarat'],
-      image: 'https://picsum.photos/600/401',
+      image: PACKAGE_IMAGES[0],
       aiHint: 'luxury hotel Kaaba',
     },
     {
@@ -30,7 +31,7 @@ const packagesData = {
       makkahHotel: '5-Star Hotel with Kaaba View',
       madinaHotel: '5-Star Hotel near Prophet\'s Mosque',
       features: ['Full Board', 'VIP Transport', 'Personal Guide', 'Exclusive Ziyarat'],
-      image: 'https://picsum.photos/600/402',
+      image: PACKAGE_IMAGES[1],
       aiHint: 'hotel suite luxury',
     },
     {
@@ -40,7 +41,7 @@ const packagesData = {
       makkahHotel: 'Clock Tower Complex Hotel',
       madinaHotel: 'Anwar Al Madinah Mövenpick',
       features: ['Full Board', 'Private Airport Transfer', 'Dedicated Concierge', 'Historical Tours'],
-      image: 'https://picsum.photos/600/407',
+      image: PACKAGE_IMAGES[2],
       aiHint: 'hotel lobby luxury',
     },
      {
@@ -50,7 +51,7 @@ const packagesData = {
       makkahHotel: 'Jabal Omar Hyatt Regency',
       madinaHotel: 'Pullman Zamzam Madina',
       features: ['All Inclusive', 'Business Class Flights', 'Helicopter Tour', '24/7 Butler Service'],
-      image: 'https://picsum.photos/600/408',
+      image: PACKAGE_IMAGES[3],
       aiHint: 'luxury suite balcony'
     },
   ],
@@ -62,7 +63,7 @@ const packagesData = {
       makkahHotel: 'Makkah Hotel & Towers',
       madinaHotel: 'Madinah Hilton',
       features: ['Breakfast & Dinner', 'Private Transport', 'Guided Ziyarat', 'Visa Processing'],
-      image: 'https://picsum.photos/600/409',
+      image: PACKAGE_IMAGES[4],
       aiHint: 'modern hotel room'
     },
     {
@@ -72,7 +73,7 @@ const packagesData = {
       makkahHotel: '4-Star Hotel (250m from Haram)',
       madinaHotel: '4-Star Hotel (200m from Masjid Nabawi)',
       features: ['Breakfast & Dinner', 'Private Luxury Transport', 'Exclusive Ziyarat', 'Umrah Kit'],
-      image: 'https://picsum.photos/600/406',
+      image: PACKAGE_IMAGES[5],
       aiHint: 'hotel suite',
     },
      {
@@ -82,7 +83,7 @@ const packagesData = {
       makkahHotel: 'Swissôtel Al Maqam Makkah',
       madinaHotel: 'Shaza Al Madina',
       features: ['Daily Breakfast Buffet', 'Private Transport', 'Guided Ziyarat', 'Visa Processing'],
-      image: 'https://picsum.photos/600/410',
+      image: PACKAGE_IMAGES[6],
       aiHint: 'comfortable hotel room'
     },
     {
@@ -92,7 +93,7 @@ const packagesData = {
       makkahHotel: 'Mövenpick Hotel & Residences Hajar Tower Makkah',
       madinaHotel: 'Dar Al Hijra InterContinental',
       features: ['Breakfast & Dinner', 'Upgraded Transport', 'Personalized Ziyarat', 'Fast-Track Visa'],
-      image: 'https://picsum.photos/600/411',
+      image: PACKAGE_IMAGES[7],
       aiHint: 'executive hotel lounge'
     },
   ],
@@ -104,7 +105,7 @@ const packagesData = {
       makkahHotel: '3-Star Hotel (400m from Haram)',
       madinaHotel: '3-Star Hotel (250m from Masjid Nabawi)',
       features: ['Breakfast Included', 'Group Transport', 'Guided Ziyarat', 'Visa Assistance'],
-      image: 'https://picsum.photos/600/412',
+      image: PACKAGE_IMAGES[8],
       aiHint: 'clean hotel room'
     },
     {
@@ -114,7 +115,7 @@ const packagesData = {
       makkahHotel: '3-Star Hotel (450m from Haram)',
       madinaHotel: '3-Star Hotel (300m from Masjid Nabawi)',
       features: ['Breakfast Included', 'Private Transport', 'Dedicated Guide', 'Group Ziyarat'],
-      image: 'https://picsum.photos/600/401',
+      image: PACKAGE_IMAGES[9],
       aiHint: 'modern hotel Mecca',
     },
     {
@@ -124,7 +125,7 @@ const packagesData = {
       makkahHotel: 'Al Ebaa Hotel',
       madinaHotel: 'Elaf Al Bustan Hotel',
       features: ['Breakfast Included', 'Group Transport', 'Guided Ziyarat', 'Umrah Seminars'],
-      image: 'https://picsum.photos/600/413',
+      image: PACKAGE_IMAGES[10],
       aiHint: 'simple hotel room'
     },
     {
@@ -134,7 +135,7 @@ const packagesData = {
       makkahHotel: 'Nawazi Watheer Hotel',
       madinaHotel: 'Al Nokhba Royal Inn',
       features: ['Breakfast Included', 'Shared Transport', 'Full Ziyarat Program', 'Spiritual Guidance'],
-      image: 'https://picsum.photos/600/414',
+      image: PACKAGE_IMAGES[11],
       aiHint: 'pilgrims walking'
     },
   ],
@@ -146,7 +147,7 @@ const packagesData = {
       makkahHotel: 'Hotel (700m from Haram)',
       madinaHotel: 'Hotel (550m from Masjid Nabawi)',
       features: ['Room Only', 'Group Transport', 'Guided Ziyarat', 'Affordable Accommodation'],
-      image: 'https://picsum.photos/600/415',
+      image: PACKAGE_IMAGES[12],
       aiHint: 'group pilgrims'
     },
     {
@@ -156,7 +157,7 @@ const packagesData = {
       makkahHotel: 'Hotel (650m from Haram)',
       madinaHotel: 'Hotel (500m from Masjid Nabawi)',
       features: ['Makkah & Madinah Stay', 'Group Transport', 'Guided Ziyarat', 'Affordable Accommodation'],
-      image: 'https://picsum.photos/600/400',
+      image: PACKAGE_IMAGES[13],
       aiHint: 'pilgrims praying',
     },
     {
@@ -166,7 +167,7 @@ const packagesData = {
       makkahHotel: 'Hotel (800m from Haram)',
       madinaHotel: 'Hotel (600m from Masjid Nabawi)',
       features: ['Shared Rooms', 'Basic Transport', 'Guided Ziyarat', 'Visa Support'],
-      image: 'https://picsum.photos/600/416',
+      image: PACKAGE_IMAGES[14],
       aiHint: 'crowd praying'
     },
     {
@@ -176,7 +177,7 @@ const packagesData = {
       makkahHotel: 'Hotel (900m from Haram)',
       madinaHotel: 'Hotel (700m from Masjid Nabawi)',
       features: ['Full Ramadan Stay', 'Group Transport', 'Iftar & Suhoor Arrangement', 'Spiritual Lectures'],
-      image: 'https://picsum.photos/600/417',
+      image: PACKAGE_IMAGES[15],
       aiHint: 'iftar meal'
     },
   ]

@@ -1,9 +1,10 @@
+import { PACKAGE_IMAGES } from "./packages-data";
 
 export const allBlogPosts = [
   {
     slug: '10-essential-items-to-pack-for-your-umrah-trip',
     title: '10 Essential Items to Pack for Your Umrah Trip',
-    image: 'https://picsum.photos/1200/800',
+    image: PACKAGE_IMAGES[10],
     aiHint: 'travel luggage',
     author: 'Baitullah Travels',
     date: 'October 26, 2023',
@@ -24,7 +25,7 @@ export const allBlogPosts = [
   {
     slug: 'a-step-by-step-guide-to-performing-hajj',
     title: 'A Step-by-Step Guide to Performing Hajj',
-    image: 'https://picsum.photos/1200/801',
+    image: PACKAGE_IMAGES[11],
     aiHint: 'compass qibla',
     author: 'Baitullah Travels',
     date: 'October 22, 2023',
@@ -39,7 +40,7 @@ export const allBlogPosts = [
   {
     slug: 'the-spiritual-significance-of-zamzam-water',
     title: 'The Spiritual Significance of Zamzam Water',
-    image: 'https://picsum.photos/1200/802',
+    image: PACKAGE_IMAGES[12],
     aiHint: 'water spring',
     author: 'Baitullah Travels',
     date: 'October 18, 2023',
@@ -56,7 +57,7 @@ export const getBlogPostBySlug = (slug: string) => {
   return post || {
     slug: 'not-found',
     title: 'Blog Post Not Found',
-    image: 'https://picsum.photos/1200/803',
+    image: PACKAGE_IMAGES[13],
     aiHint: 'desert landscape',
     author: 'System',
     date: new Date().toLocaleDateString(),

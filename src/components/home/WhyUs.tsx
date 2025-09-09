@@ -39,7 +39,7 @@ const features = [
 ];
 
 const FeatureCard = ({ feature }: { feature: (typeof features)[0] }) => (
-    <Card className="text-center shadow-lg bg-card/80 h-full min-w-[300px] md:min-w-[350px]">
+    <Card className="text-center shadow-lg bg-card/80 h-full min-w-[300px] md:min-w-[350px] backdrop-blur-sm">
         <CardHeader>
             <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                 {feature.icon}
@@ -55,8 +55,9 @@ const FeatureCard = ({ feature }: { feature: (typeof features)[0] }) => (
 
 const WhyUs = () => {
   return (
-    <section id="why-us" className="py-16 sm:py-24 bg-background">
-      <div className="container">
+    <section id="why-us" className="py-16 sm:py-24 parallax-bg">
+      <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
+      <div className="container relative">
         <div className="text-center mb-12">
           <h2 className="font-arabic text-4xl md:text-5xl font-bold text-primary mb-4">Why Choose Baitullah Travels?</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">

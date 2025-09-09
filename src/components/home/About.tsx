@@ -1,14 +1,16 @@
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
+import { PACKAGE_IMAGES } from '@/lib/packages-data';
 
 const About = () => {
   return (
-    <section id="about" className="py-16 sm:py-24 bg-secondary/30">
-      <div className="container">
+    <section id="about" className="py-16 sm:py-24 parallax-bg">
+      <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
+      <div className="container relative">
         <div className="text-center mb-12">
           <h2 className="font-arabic text-4xl md:text-5xl font-bold text-primary mb-4">About Baitullah Travels</h2>
         </div>
-        <Card className="overflow-hidden shadow-xl">
+        <Card className="overflow-hidden shadow-xl bg-card/80 backdrop-blur-sm">
           <div className="grid md:grid-cols-2 items-center">
             <div className="p-8 md:p-12">
               <h3 className="font-headline text-2xl font-semibold text-primary mb-4">Your Trusted Partner in Sacred Journeys</h3>
@@ -21,7 +23,7 @@ const About = () => {
             </div>
             <div className="relative h-64 md:h-full min-h-[300px]">
               <Image 
-                src="https://picsum.photos/800/600"
+                src={PACKAGE_IMAGES[13]}
                 alt="Interior of a grand mosque"
                 data-ai-hint="mosque interior"
                 fill

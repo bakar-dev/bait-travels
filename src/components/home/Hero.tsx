@@ -14,12 +14,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { PACKAGE_IMAGES } from "@/lib/packages-data";
 
 const heroSlides = [
   {
     title: 'Embark on a Sacred Journey',
     description: 'Experience the spiritual journey of a lifetime with our tailored Umrah and Hajj packages.',
-    image: 'https://picsum.photos/1920/1080',
+    image:  PACKAGE_IMAGES[3],
     aiHint: 'kaaba makkah',
     buttonLabel: 'Explore Packages',
     buttonLink: '#packages',
@@ -27,7 +28,7 @@ const heroSlides = [
   {
     title: 'Discover Our 5-Star Packages',
     description: 'Travel with comfort and peace of mind. Luxurious accommodations close to the Haram.',
-    image: 'https://picsum.photos/1920/1081',
+    image:  PACKAGE_IMAGES[16],
     aiHint: 'madinah mosque',
     buttonLabel: 'View 5-Star Deals',
     buttonLink: '#packages',
@@ -35,7 +36,7 @@ const heroSlides = [
   {
     title: 'Your Trusted Umrah Partner',
     description: 'Years of experience in providing seamless and meaningful pilgrimage journeys.',
-    image: 'https://picsum.photos/1920/1082',
+    image:  PACKAGE_IMAGES[12],
     aiHint: 'pilgrims praying',
     buttonLabel: 'About Us',
     buttonLink: '#about',

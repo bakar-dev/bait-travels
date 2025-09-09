@@ -51,15 +51,16 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-secondary/30">
-      <div className="container">
+    <section id="contact" className="py-16 sm:py-24 parallax-bg">
+      <div className="absolute inset-0 bg-background/80 dark:bg-background/90" />
+      <div className="container relative">
         <div className="text-center mb-12">
           <h2 className="font-arabic text-4xl md:text-5xl font-bold text-primary mb-4">Get In Touch</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Have questions or need assistance? Fill out the form below, and our team will be happy to help you.
           </p>
         </div>
-        <Card className="max-w-2xl mx-auto shadow-lg">
+        <Card className="max-w-2xl mx-auto shadow-lg bg-card/80 backdrop-blur-sm">
           <CardContent className="p-6 md:p-8">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
