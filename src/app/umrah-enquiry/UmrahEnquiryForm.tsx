@@ -33,7 +33,7 @@ const UmrahEnquiryForm = () => {
        }
        
        try {
-         const response = await fetch("https://formsubmit.co/your-email@example.com", {
+         const response = await fetch("https://formsubmit.co/baker.pucit@gmail.com", {
            method: "POST",
            body: formData,
            headers: {

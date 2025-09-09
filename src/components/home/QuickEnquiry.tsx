@@ -7,10 +7,10 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
+import { Form, FormField, FormItem, FormControl, FormMessage, FormLabel } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Users, Phone, Send } from "lucide-react";
+import { Users, Phone, Send, Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   passengers: z.coerce.number().min(1, { message: "Min 1" }),
@@ -31,13 +31,42 @@ const QuickEnquiry = () => {
     },
   });
 
+  const { isSubmitting, isDirty, isValid } = form.formState;
+
   const onSubmit = async (data: FormData) => {
-    console.log(data);
-    toast({
-      title: "Quick Enquiry Sent!",
-      description: "We've received your details and will call you back shortly.",
-    });
-    form.reset();
+    try {
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value.toString());
+      });
+      formData.append("_captcha", "false");
+
+
+      const response = await fetch("https://formsubmit.co/baker.pucit@gmail.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        },
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Quick Enquiry Sent!",
+          description: "We've received your details and will call you back shortly.",
+        });
+        form.reset();
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request. Please try again.",
+      });
+    }
   };
 
   return (
@@ -47,11 +76,13 @@ const QuickEnquiry = () => {
           <CardContent className="p-4 md:p-6">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-4 items-end gap-4">
+                 <input type="hidden" name="_captcha" value="false" />
                 <FormField
                   control={form.control}
                   name="passengers"
                   render={({ field }) => (
                     <FormItem>
+                       <FormLabel className="md:sr-only">Passengers</FormLabel>
                       <div className="relative">
                         <Users className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <Input type="number" placeholder="No. of Passengers" className="pl-10" {...field} />
@@ -65,6 +96,7 @@ const QuickEnquiry = () => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
+                       <FormLabel className="md:sr-only">Phone Number</FormLabel>
                       <div className="relative">
                         <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                         <Input placeholder="Your Phone Number" className="pl-10" {...field} />
@@ -78,6 +110,7 @@ const QuickEnquiry = () => {
                   name="packageType"
                   render={({ field }) => (
                     <FormItem>
+                      <FormLabel className="md:sr-only">Package Type</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
                           <SelectTrigger>
@@ -95,9 +128,9 @@ const QuickEnquiry = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
-                   <Send className="mr-2 h-4 w-4"/>
-                  {form.formState.isSubmitting ? "Sending..." : "Request a Callback"}
+                <Button type="submit" className="w-full" disabled={isSubmitting || !isDirty || !isValid}>
+                   {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4"/>}
+                  {isSubmitting ? "Sending..." : "Request a Callback"}
                 </Button>
               </form>
             </Form>
