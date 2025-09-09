@@ -1,9 +1,15 @@
+
+"use client";
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Hotel, Check } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
+import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
 
 const packagesData = {
   '5-star': [
@@ -176,46 +182,58 @@ const packagesData = {
   ]
 };
 
-const PackageCard = ({ pkg }: { pkg: any }) => (
-  <Card key={pkg.name} className="flex flex-col overflow-hidden transform hover:scale-105 transition-transform duration-300 shadow-lg">
-    <CardHeader className="p-0">
-      <div className="relative h-56 w-full">
-        <Image src={pkg.image} alt={pkg.name} data-ai-hint={pkg.aiHint} fill className="object-cover" />
-      </div>
-    </CardHeader>
-    <CardContent className="flex-grow p-6">
-      <CardTitle className="mb-4 text-lg font-headline text-primary">{pkg.name}</CardTitle>
-      <div className="space-y-3 text-muted-foreground mb-4">
-        <div className="flex items-start">
-          <Hotel className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" />
-          <div>
-            <p className="font-semibold text-sm">Makkah: {pkg.makkahHotel}</p>
+const PackageCard = ({ pkg }: { pkg: any }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <Card key={pkg.name} className="flex flex-col overflow-hidden transform hover:scale-105 transition-transform duration-300 shadow-lg">
+      <CardHeader className="p-0">
+        <div className="relative h-56 w-full">
+          {isLoading && <Skeleton className="absolute inset-0" />}
+          <Image 
+            src={pkg.image} 
+            alt={pkg.name} 
+            data-ai-hint={pkg.aiHint} 
+            fill 
+            className={cn("object-cover transition-opacity duration-300", isLoading ? "opacity-0" : "opacity-100")}
+            onLoadingComplete={() => setIsLoading(false)}
+          />
+        </div>
+      </CardHeader>
+      <CardContent className="flex-grow p-6">
+        <CardTitle className="mb-4 text-lg font-headline text-primary">{pkg.name}</CardTitle>
+        <div className="space-y-3 text-muted-foreground mb-4">
+          <div className="flex items-start">
+            <Hotel className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" />
+            <div>
+              <p className="font-semibold text-sm">Makkah: {pkg.makkahHotel}</p>
+            </div>
+          </div>
+          <div className="flex items-start">
+            <Hotel className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" />
+            <div>
+              <p className="font-semibold text-sm">Madina: {pkg.madinaHotel}</p>
+            </div>
           </div>
         </div>
-        <div className="flex items-start">
-          <Hotel className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-1" />
-          <div>
-            <p className="font-semibold text-sm">Madina: {pkg.madinaHotel}</p>
-          </div>
-        </div>
-      </div>
-      <ul className="space-y-2 text-muted-foreground text-sm">
-        {pkg.features.slice(0, 2).map((feature: string) => (
-          <li key={feature} className="flex items-center">
-            <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-    </CardContent>
-    <CardFooter className="p-6 bg-secondary/50 flex justify-between items-center">
-      <p className="text-2xl font-bold text-primary">{pkg.price}</p>
-      <Link href={`/packages/${pkg.slug}`}>
-        <Button className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">View Details</Button>
-      </Link>
-    </CardFooter>
-  </Card>
-);
+        <ul className="space-y-2 text-muted-foreground text-sm">
+          {pkg.features.slice(0, 2).map((feature: string) => (
+            <li key={feature} className="flex items-center">
+              <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+      <CardFooter className="p-6 bg-secondary/50 flex justify-between items-center">
+        <p className="text-2xl font-bold text-primary">{pkg.price}</p>
+        <Link href={`/packages/${pkg.slug}`}>
+          <Button className="text-white bg-gradient-to-r from-green-700 to-green-500 hover:from-green-600 hover:to-green-400 dark:from-amber-500 dark:to-yellow-400 dark:hover:from-amber-400 dark:hover:to-yellow-300 dark:text-emerald-900">View Details</Button>
+        </Link>
+      </CardFooter>
+    </Card>
+  );
+};
 
 const Packages = () => {
   return (
