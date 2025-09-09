@@ -6,6 +6,7 @@ import About from '@/components/home/About';
 import Blog from '@/components/home/Blog';
 import Contact from '@/components/home/Contact';
 import FloatingActions from '@/components/common/FloatingActions';
+import QuickEnquiry from '@/components/home/QuickEnquiry';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <Hero />
+        <QuickEnquiry />
         <Packages />
         <About />
         <Blog />

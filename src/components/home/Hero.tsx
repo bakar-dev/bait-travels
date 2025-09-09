@@ -1,7 +1,11 @@
+"use client"
+
+import * as React from "react"
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Card, CardContent } from "@/components/ui/card";
+import Autoplay from "embla-carousel-autoplay"
+
 import {
   Carousel,
   CarouselContent,
@@ -38,9 +42,19 @@ const heroSlides = [
 ]
 
 const Hero = () => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  )
+
   return (
     <section id="home" className="relative w-full flex items-center justify-center text-primary-foreground -mt-16">
-      <Carousel className="w-full" opts={{ loop: true }} autoplay-delay="5000">
+      <Carousel 
+        className="w-full" 
+        opts={{ loop: true }}
+        plugins={[plugin.current]}
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+      >
         <CarouselContent>
           {heroSlides.map((slide, index) => (
             <CarouselItem key={index}>
