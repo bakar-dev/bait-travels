@@ -18,52 +18,26 @@ const UmrahEnquiryForm = () => {
     const { toast } = useToast();
     const [departureDate, setDepartureDate] = useState<Date | undefined>();
 
+    // This client-side handler is kept for handling date state, but submission is a standard form post.
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const formData = new FormData(event.currentTarget);
-        
-        // Manually add the date to the form data
-        if(departureDate) {
-            formData.append('departureDate', format(departureDate, 'PPP'));
-        }
-
-        try {
-            const response = await fetch("https://formspree.io/f/your_enquiry_form_id", { // Replace with your Formspree ID
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                toast({
-                    title: "Enquiry Submitted!",
-                    description: "Thank you for your interest. We will contact you shortly.",
-                });
-                (event.target as HTMLFormElement).reset();
-                setDepartureDate(undefined);
-            } else {
-                 toast({
-                    variant: "destructive",
-                    title: "Submission Failed",
-                    description: "Could not submit your enquiry. Please try again.",
-                });
-            }
-        } catch (error) {
-            toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: "An error occurred. Please try again.",
-            });
-        }
+       // The form will submit via its action attribute. We can add client-side validation here if needed.
+       // For this setup, we'll let the native form submission handle it.
     };
 
 
   return (
     <Card className="max-w-4xl mx-auto shadow-lg">
       <CardContent className="p-6 md:p-8">
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form 
+            action="https://formsubmit.co/your-email@example.com" // Replace with your email address
+            method="POST" 
+            className="space-y-6"
+        >
+             {/* Optional: Redirect to a thank you page */}
+             <input type="hidden" name="_next" value="https://your-domain.co/" /> 
+             {/* Optional: Disable Captcha */}
+             <input type="hidden" name="_captcha" value="false" />
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                  <div className="space-y-2">
                     <Label htmlFor="fullName">Full Name</Label>
@@ -82,6 +56,8 @@ const UmrahEnquiryForm = () => {
                 </div>
                 <div className="flex flex-col space-y-2">
                     <Label>Preferred Departure Date</Label>
+                     {/* Hidden input to pass date value through the standard form submission */}
+                    <input type="hidden" name="departureDate" value={departureDate ? format(departureDate, "PPP") : "Not specified"} />
                     <Popover>
                       <PopoverTrigger asChild>
                           <Button

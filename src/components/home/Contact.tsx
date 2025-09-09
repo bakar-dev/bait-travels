@@ -21,10 +21,15 @@ const Contact = () => {
         <Card className="max-w-2xl mx-auto shadow-lg bg-card/80 backdrop-blur-sm">
           <CardContent className="p-6 md:p-8">
             <form
-              action="https://formspree.io/f/your_contact_form_id" // Replace with your Formspree ID
+              action="https://formsubmit.co/your-email@example.com" // Replace with your email address
               method="POST"
               className="space-y-6"
             >
+              {/* Optional: Redirect to a thank you page */}
+              <input type="hidden" name="_next" value="https://your-domain.co/" /> 
+              {/* Optional: Disable Captcha */}
+              <input type="hidden" name="_captcha" value="false" />
+
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
                 <Input id="name" name="name" placeholder="Your Name" required />
