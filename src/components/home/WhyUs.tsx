@@ -3,12 +3,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Award, Clock, HeartHandshake, Headphones, Star, Users } from "lucide-react";
-import Autoplay from "embla-carousel-autoplay"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
+import { cn } from '@/lib/utils';
 
 const features = [
   {
@@ -43,11 +38,22 @@ const features = [
   },
 ];
 
-const WhyUs = () => {
-    const plugin = React.useRef(
-        Autoplay({ delay: 2000, stopOnInteraction: false, stopOnMouseEnter: true })
-    )
+const FeatureCard = ({ feature }: { feature: (typeof features)[0] }) => (
+    <Card className="text-center shadow-lg bg-card/80 h-full min-w-[300px] md:min-w-[350px]">
+        <CardHeader>
+            <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                {feature.icon}
+            </div>
+        </CardHeader>
+        <CardContent>
+            <CardTitle className="text-xl font-headline text-primary mb-2">{feature.title}</CardTitle>
+            <p className="text-muted-foreground">{feature.description}</p>
+        </CardContent>
+    </Card>
+);
 
+
+const WhyUs = () => {
   return (
     <section id="why-us" className="py-16 sm:py-24 bg-background">
       <div className="container">
@@ -57,35 +63,17 @@ const WhyUs = () => {
             We are committed to making your sacred journey a memorable and spiritually fulfilling experience.
           </p>
         </div>
-        <Carousel
-            opts={{
-                align: "start",
-                loop: true,
-            }}
-            plugins={[plugin.current]}
-            className="w-full"
-        >
-            <CarouselContent>
-                 {features.map((feature, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                         <div className="p-1">
-                            <Card className="text-center transform hover:scale-105 transition-transform duration-300 shadow-lg bg-card/80 h-full">
-                                <CardHeader>
-                                    <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
-                                        {feature.icon}
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <CardTitle className="text-xl font-headline text-primary mb-2">{feature.title}</CardTitle>
-                                    <p className="text-muted-foreground">{feature.description}</p>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-        </Carousel>
       </div>
+       <div className="relative w-full overflow-hidden">
+            <div className="flex animate-[marquee_40s_linear_infinite] hover:[animation-play-state:paused]">
+                {[...features, ...features].map((feature, index) => (
+                    <div key={index} className="px-4">
+                        <FeatureCard feature={feature} />
+                    </div>
+                ))}
+            </div>
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-background via-transparent to-background"></div>
+        </div>
     </section>
   );
 };

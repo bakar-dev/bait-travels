@@ -80,4 +80,13 @@
    .animated-border > * {
     border-radius: calc(0.5rem - 2px); /* inner radius should be outer radius - padding */
   }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
