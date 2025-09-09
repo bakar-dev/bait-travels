@@ -85,7 +85,7 @@ const Header = () => {
             <ThemeToggle />
             <div className="relative animated-border">
               <Link href="/umrah-enquiry">
-                  <Button className="relative bg-lime-100 dark:bg-lime-900/50 hover:bg-lime-200 dark:hover:bg-lime-900/80 text-foreground">
+                  <Button className="relative bg-lime-100 dark:bg-lime-950 hover:bg-lime-200 dark:hover:bg-lime-900 text-foreground">
                       <HelpCircle className="mr-2 h-4 w-4"/>
                       Umrah Enquiry
                   </Button>
