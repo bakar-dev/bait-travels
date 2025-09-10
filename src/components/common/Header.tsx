@@ -56,7 +56,7 @@ const Header = () => {
             <div className="flex flex-row items-center gap-4 text-black">
                 <a href="tel:+1-234-567-890" className="flex items-center gap-1 hover:underline">
                     <Phone size={14}/>
-                    <span className="text-black">_1 (234) 567-890</span>
+                    <span className="text-black">+92 (234) 567-890</span>
                 </a>
                  <a href="mailto:info@baitullahtravels.com" className="flex items-center gap-1 hover:underline">
                     <Mail size={14}/>
